@@ -11,15 +11,16 @@
   "author": "[Yori Zhao](https://github.com/zjkhiyori)",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "node-schedule": "^1.3.2",
-    "qrcode-terminal": "^0.12.0",
-    "rimraf": "^2.6.3",
-    "wechaty": "^0.22.6",
-    "moment": "2.24.0"
+    "babel-cli": "latest",
+    "babel-preset-es2015": "latest",
+    "node-schedule": "latest",
+    "qrcode-terminal": "latest",
+    "rimraf": "latest",
+    "wechaty": "latest",
+    "moment": "latest"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "latest",
+    "forever": "^4.0.1"
   }
 }

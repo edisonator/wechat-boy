@@ -22,4 +22,22 @@ export default class Util {
     });
     return msg;
   }
+
+  static handleTopNews({ data }, ian) {
+    const { calendar, newsList, weather, sentence } = data;
+    const { cMonth, cDay, nWeek, ncWeek, monthCn, dayCn, isTerm, term } = calendar;
+    const termName = isTerm ? `，${term}` : '';
+    const content = newsList.map((news, index) => {
+      return `${index + 1}、${news.title}。`
+    }).join('\n\n');
+    const greetings = (1 <= nWeek && nWeek <= 5) ? '工作愉快，生活喜乐' : '周末愉快';
+
+    return `${cMonth}月${cDay}日，${ncWeek}，农历${monthCn}${dayCn}${termName}，${greetings}！
+
+一份微语报，早知天下事！
+
+${content}
+
+${ian ? `【帅帅微语】${ian}` : ''}`
+  }
 }

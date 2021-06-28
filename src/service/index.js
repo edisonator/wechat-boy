@@ -9,6 +9,8 @@ import {
   TIANQI_KEY,
   NEWS_URL,
   NEWS_KEY,
+  TOP_URL_WH,
+  IAN_URL
 } from '../config';
 import Util from "../util";
 
@@ -32,15 +34,15 @@ export default class Service {
     let msg;
     try {
       let response;
-      if (MOCK) {
-        response = require('./news');
-      } else {
+      // if (MOCK) {
+      //   response = require('./news');
+      // } else {
         response = await this.get(NEWS_URL, {
           params: {
             key: NEWS_KEY,
           },
         });
-      }
+      // }
       msg = Util.handleNewsData(response);
     } catch (e) {
       console.error(e);
@@ -69,6 +71,25 @@ export default class Service {
       msg = '获取天气失败';
     }
     return msg;
+  }
+
+  static async getTopNews() {
+    let msg;
+    try {
+      const newsRes = await this.get(TOP_URL_WH);
+      const ianRes = await this.get(IAN_URL);
+
+      msg = Util.handleTopNews(newsRes, ianRes.success ? ianRes.ishan : null);
+      
+    } catch (e) {
+      console.error(e);
+      msg = '获取新闻失败';
+    }
+    return msg;
+  }
+
+  static async getIan() {
+
   }
 
   static async reply(content) {
